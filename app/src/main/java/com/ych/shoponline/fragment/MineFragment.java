@@ -1,26 +1,22 @@
 package com.ych.shoponline.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
+import com.ych.shoponline.R;
 
 /**
- * Created by Ivan on 15/9/22.
+ * Created by Administrator on 2016/10/27.
  */
-public class MineFragment extends BaseFragment{
-
-
-
+public class MineFragment extends Fragment {
+    @Nullable
     @Override
-    public View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_mine,container,false);
-    }
-
-    @Override
-    public void init() {
-
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_mine,container,false);
+        return view;
     }
 }
