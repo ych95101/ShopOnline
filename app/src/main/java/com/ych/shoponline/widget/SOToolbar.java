@@ -1,6 +1,7 @@
-package com.ych.shoponline.weidgt;
+package com.ych.shoponline.widget;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.TintTypedArray;
@@ -41,25 +42,43 @@ public class SOToolbar extends Toolbar {
         super(context, attrs, defStyleAttr);
 
         initView();
+        setContentInsetsRelative(10,10);
 
         if(attrs != null){
             final TintTypedArray a =TintTypedArray.obtainStyledAttributes(getContext(),attrs,R.styleable.SOToolBar,defStyleAttr,0);
 
+            final Drawable rightIcon = a.getDrawable(R.styleable.SOToolBar_rightButtonIcon);
+            if(rightIcon!=null){
+                setRightButtonIcon(rightIcon);
+            }
 
+
+            boolean isShowSearchView = a.getBoolean(R.styleable.SOToolBar_isShowSearchView,false);
+
+            if(isShowSearchView){
+
+                showSearchView();
+                hideTitleView();
+
+            }
+
+            a.recycle();
         }
     }
 
     private void initView() {
-        mInflater = LayoutInflater.from(getContext());
-        mView = mInflater.inflate(R.layout.toolbar,null);
+        if(mView == null) {
+            mInflater = LayoutInflater.from(getContext());
+            mView = mInflater.inflate(R.layout.toolbar, null);
 
-        mTextTitle = (TextView) mView.findViewById(R.id.toolbar_title);
-        mSearchView = (EditText) mView.findViewById(R.id.toolbar_searchview);
-        mRightButton = (Button) mView.findViewById(R.id.toolbar_rightButton);
+            mTextTitle = (TextView) mView.findViewById(R.id.toolbar_title);
+            mSearchView = (EditText) mView.findViewById(R.id.toolbar_searchview);
+            mRightButton = (Button) mView.findViewById(R.id.toolbar_rightButton);
 
-        //指定我们要的toolbar的长宽，对齐方式
-        LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL);
-        addView(mView,lp);
+            //指定我们要的toolbar的长宽，对齐方式
+            LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL);
+            addView(mView, lp);
+        }
     }
 
     @Override
@@ -74,6 +93,20 @@ public class SOToolbar extends Toolbar {
             mTextTitle.setText(title);
             showTitleView();
         }
+    }
+
+    public void  setRightButtonIcon(Drawable icon){
+
+        if(mRightButton !=null){
+
+            mRightButton.setBackground(icon);
+            mRightButton.setVisibility(VISIBLE);
+        }
+
+    }
+    public  void setRightButtonOnClickListener(OnClickListener li){
+
+        mRightButton.setOnClickListener(li);
     }
 
     public  void showSearchView(){

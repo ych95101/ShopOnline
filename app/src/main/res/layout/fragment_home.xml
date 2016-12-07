@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:ych="http://schemas.android.com/apk/res-auto">
 
-    <RadioButton
-        android:layout_width="wrap_content"
+
+    <com.ych.shoponline.widget.SOToolbar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New RadioButton"
-        android:id="@+id/radioButton"
-        android:layout_gravity="center_vertical" />
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        ych:isShowSearchView="true"
+        />
+
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        ych:pager_animation="Accordion"
+        ych:auto_cycle="true"
+        ych:pager_animation_span="1100"
+        ych:indicator_visibility="visible"
+        />
+
 </LinearLayout>
