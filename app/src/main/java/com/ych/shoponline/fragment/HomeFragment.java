@@ -34,6 +34,7 @@ public class HomeFragment extends Fragment{
         return view;
     }
 
+    //初始化滚动图片
     private void initSlider() {
         TextSliderView demoSlider = new TextSliderView(this.getActivity());
         demoSlider.description("梦想家1");
@@ -54,7 +55,8 @@ public class HomeFragment extends Fragment{
         mSliderLayout.setDuration(4000);
 
 
-        mSliderLayout.addOnPageChangeListener(new ViewPagerEx.OnPageChangeListener() {
+        //添加图片滚动事件以及点击图片事件
+        /*mSliderLayout.addOnPageChangeListener(new ViewPagerEx.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.i(Tag,"OnPageScrolled");
@@ -69,7 +71,7 @@ public class HomeFragment extends Fragment{
             public void onPageScrollStateChanged(int state) {
                 Log.i(Tag,"onPageScrollStateChanged");
             }
-        });
+        });*/
     }
 
     @Override

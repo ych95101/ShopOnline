@@ -4,6 +4,7 @@
 
 
     <!-- Non focused states -->
+    <!-- state_focused 焦点 state_selected 选中  state_pressed是点击-->
     <item android:state_focused="false" android:state_selected="false" android:state_pressed="false" android:drawable="@mipmap/icon_home" />
     <item android:state_focused="false" android:state_selected="true" android:state_pressed="false" android:drawable="@mipmap/icon_home_press" />
     <!-- Focused states -->
